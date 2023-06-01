@@ -19,12 +19,7 @@ export interface Match {
     slug: string;
     title: string;
     streamer: Player;
-    red_player: Player;
-    red_town: Town;
-    red_hero: Hero;
-    blue_player: Player;
-    blue_town: Town;
-    blue_hero: Hero;
+    players: MatchPlayer[];    
   }
 
 export function loadMatchBySlug(slug: string): Match | undefined{
@@ -36,22 +31,66 @@ export const matches: Match[] = [
       slug: 'NxnN55pWflg', 
       title: 'New version = Spawning Angels out of thin air',  
       streamer: loadPlayerBySlug(PlayerEnum.Lexiav),
-      red_player: loadPlayerBySlug(PlayerEnum.Lexiav),
-      red_town: loadTownBySlug(TownEnum.Castle),
-      red_hero: loadHeroBySlug(HeroEnum.Anabel),
-      blue_player: loadPlayerBySlug('browntown'),
-      blue_town: loadTownBySlug(TownEnum.Castle),
-      blue_hero: loadHeroBySlug(HeroEnum.Roland),
+      players: [
+        {
+          player: loadPlayerBySlug(PlayerEnum.Lexiav),
+          town: loadTownBySlug(TownEnum.Castle),
+          hero: loadHeroBySlug(HeroEnum.Anabel),
+          color: ColorEnum.Red
+        },
+        {
+          player: loadPlayerBySlug('browntown'),
+          town: loadTownBySlug(TownEnum.Castle),
+          hero: loadHeroBySlug(HeroEnum.Roland),
+          color: ColorEnum.Blue
+        }
+      ]
     },
     { 
       slug: 'NxnN55pWflg', 
       title: 'New version = Spawning Angels out of thin air',  
-      streamer: loadPlayerBySlug('browntown'),
-      red_player: loadPlayerBySlug(PlayerEnum.Lexiav),
-      red_town: loadTownBySlug(TownEnum.Necropolis),
-      red_hero: loadHeroBySlug(HeroEnum.Roland),
-      blue_player: loadPlayerBySlug('browntown'),
-      blue_town: loadTownBySlug(TownEnum.Castle),
-      blue_hero: loadHeroBySlug(HeroEnum.Roland),
+      streamer: loadPlayerBySlug(PlayerEnum.Lexiav),
+      players: [
+        {
+          player: loadPlayerBySlug(PlayerEnum.Lexiav),
+          town: loadTownBySlug(TownEnum.Necropolis),
+          hero: loadHeroBySlug(HeroEnum.Roland),
+          color: ColorEnum.Red
+        },
+        {
+          player: loadPlayerBySlug('browntown'),
+          town: loadTownBySlug(TownEnum.Castle),
+          hero: loadHeroBySlug(HeroEnum.Roland),
+          color: ColorEnum.Blue
+        }
+      ]
     },
   ];
+
+
+
+// or:
+export const matches: Match[] = [
+  { 
+    slug: 'NxnN55pWflg', 
+    title: 'New version = Spawning Angels out of thin air',  
+    streamer: loadPlayerBySlug(PlayerEnum.Lexiav),
+    red_player: loadPlayerBySlug(PlayerEnum.Lexiav),
+    red_town: loadTownBySlug(TownEnum.Castle),
+    red_hero: loadHeroBySlug(HeroEnum.Anabel),
+    blue_player: loadPlayerBySlug('browntown'),
+    blue_town: loadTownBySlug(TownEnum.Castle),
+    blue_hero: loadHeroBySlug(HeroEnum.Roland),
+  },
+  { 
+    slug: 'NxnN55pWflg', 
+    title: 'New version = Spawning Angels out of thin air',  
+    streamer: loadPlayerBySlug('browntown'),
+    red_player: loadPlayerBySlug(PlayerEnum.Lexiav),
+    red_town: loadTownBySlug(TownEnum.Necropolis),
+    red_hero: loadHeroBySlug(HeroEnum.Roland),
+    blue_player: loadPlayerBySlug('browntown'),
+    blue_town: loadTownBySlug(TownEnum.Castle),
+    blue_hero: loadHeroBySlug(HeroEnum.Roland),
+  },
+];  
